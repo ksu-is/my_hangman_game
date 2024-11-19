@@ -82,9 +82,9 @@ def run_game():
         if guessed == False:
             for letter in game_word:
                 if letter in user_guesses:
-                    status += letter
+                    status += letter + " "
                 else:
-                    status += '_'
+                    status += '_ '
             print(status)
 
         if status == game_word:
