@@ -97,8 +97,8 @@ def run_game():
             print('''  +---+
   |   |
   O   |
- /|\  |
- / \  |
+ /|\\  |
+ / \\  |
       |
 =========''')
             print("You've exhausted all of your tries without guessing the word! :( The correct word was", game_word.capitalize())
@@ -140,7 +140,7 @@ O   |
             print('''+---+
  |   |
  O   |
-/|\  |
+/|\\  |
      |
      |
 =========''')
@@ -149,7 +149,7 @@ O   |
             print('''+---+
  |   |
  O   |
-/|\  |
+/|\\  |
 /    |
      |
 =========''')
@@ -157,8 +157,8 @@ O   |
             print('''  +---+
  |   |
  O   |
-/|\  |
-/ \  |
+/|\\  |
+/ \\  |
      |
 =========''')
 
