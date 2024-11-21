@@ -18,7 +18,7 @@ def play_again(difficulty):
     user_response = input("Would you like to play the game again? Enter \"y\" or \"n\" : ").lower()
 
     if user_response == "y":
-        run_game(difficulty + 2)
+        run_game(difficulty)
     elif user_response == "n":
         print("See you next time!")
     else:
@@ -42,6 +42,7 @@ def random_word(min_length, max_length):
 # Define function to run the game
 def run_game(difficulty):
     welcome()
+    print("The difficulty is: " + str(difficulty))
     alphabet = "abcdefghijklmnopqrstuvwxyz7".upper()
     game_word= random_word(difficulty + 2, difficulty + 4)
     user_guesses=[]
@@ -67,8 +68,18 @@ def run_game(difficulty):
                 user_guesses.append(guess)
                 user_tries-=1
             elif guess in game_word:
-                print("Excellent! You correctly guessed a letter!")
-                user_guesses.append(guess)
+                status= ""
+                for letter in game_word:
+                    if letter in user_guesses:
+                        status += letter + " "
+                    else:
+                        status += '_ '
+                if status == game_word:
+                    guessed == True
+                    break
+                else:
+                    print("Excellent! You correctly guessed a letter!")
+                    user_guesses.append(guess)
             else:
                 print("Invalid input. Try again.")
 
@@ -96,8 +107,9 @@ def run_game(difficulty):
                     status += '_ '
             print(status)
 
-        if status == game_word:
+        if status.replace(" ","") == game_word:
             print("Awesome job! You correctly guessed the word!")
+            play_again(difficulty + 2)
             guessed == True
             break
 #ASCII art to show the hangman game. Art from https://gist.github.com/chrishorton/8510732aa9a80a03c829b09f12e20d9c
@@ -110,6 +122,7 @@ def run_game(difficulty):
       |
 =========''')
             print("You've exhausted all of your tries without guessing the word! :( The correct word was", game_word.capitalize())
+            play_again(difficulty)
             break
 
         elif user_tries==6:
@@ -170,6 +183,8 @@ O   |
      |
 =========''')
 
-    play_again(difficulty)
+    if(guessed):
+        print("Awesome job! You correctly guessed the word!")
+        play_again(difficulty + 2)
 
 run_game(0)
