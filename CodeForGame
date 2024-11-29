@@ -43,7 +43,6 @@ def random_word(min_length, max_length):
 
 # Define function to run the game
 def run_game(difficulty):
-    welcome()
     print("The difficulty is: " + str(difficulty))
     alphabet = "abcdefghijklmnopqrstuvwxyz7".upper()
     game_word= random_word(difficulty + 2, difficulty + 4)
@@ -189,5 +188,5 @@ O   |
         print("Awesome job! You correctly guessed the word!")
         play_again(difficulty + 2)
 
-
+welcome()
 run_game(difficulty)
