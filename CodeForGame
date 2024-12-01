@@ -16,16 +16,19 @@ def welcome():
 # Create a function that asks the user if they would like to play again
 def play_again(difficulty):
     if difficulty <= 12:
-        user_response = input("Would you like to play the game again? Enter \"y\" or \"n\" : ").lower()
+        while True:
+            user_response = input("Would you like to play the game again? Enter \"y\" or \"n\" : ").lower()
+
+            if user_response == "y" or user_response == "n":
+                break
+            else:
+                print("invalid input")
+
         if user_response == "y":
             run_game(difficulty + 1)
-    
+        
         elif user_response == "n":
             print("See you next time!")
-
-        else:
-            print("invalid input")
-            user_response = input("Would you like to play the game again? Enter \"y\" or \"n\" : ").lower()
     
     else:
         print("Congrats you beat the game!")
